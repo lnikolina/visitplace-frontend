@@ -9,7 +9,7 @@
                 <img class="card-img-top" :src="info.url"/>
             </div>
             <div class="card-footer text-muted">
-               {{info.time}}
+               {{info.adress}}
             </div>
         </div>
     </div>

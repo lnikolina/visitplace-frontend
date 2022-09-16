@@ -21,9 +21,9 @@ import store from "@/store"
 let cards = []
 // ... API  -> sve kartice -> cards
 cards = [
-  {url: 'https://picsum.photos/id/1/400/400', description: 'Euphrasian Basilica', time: 'one hour ago...'},
-  {url: 'https://picsum.photos/id/2/400/400', description: 'laptop2', time: 'two hour ago...'},
-  {url: 'https://picsum.photos/id/3/400/400', description: 'laptop3', time: 'tree hour ago...'},
+  {url: 'https://whc.unesco.org/uploads/thumbs/site_0809_0003-1200-630-20151104150413.jpg', description: 'Euphrasian Basilica', adress: 'Ul. svetog Eleuterija 22'},
+  {url: 'https://thumbs.dreamstime.com/b/stara-roma%C5%84ska-brama-porec-chorwacja-72399349.jpg', description: 'Stara Romanska brama', adress: 'Poreč'},
+  {url: 'https://www.myporec.com/uploads/imgcache/large/articles/_08_porec_aerial_eufrasiana.jpg', description: 'Stari grad Poreč', adress: 'Otokar Kersovani 8'},
 ];
 
 export default {
