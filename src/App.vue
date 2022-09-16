@@ -1,13 +1,14 @@
 <template>
   <div id="app">
 
-    <nav class="nav justify-content-center"> 
-        <router-link class="nav-link active" to="/">Home</router-link> 
+    <nav class="nav nav-pills nav-fill"> 
+        <router-link class="nav-link" to="/">Home</router-link> 
         <router-link class="nav-link" to="/beach">Beach</router-link> 
         <router-link class="nav-link" to="/shops">Shops</router-link> 
-        <router-link class="nav-link" to="/history">History</router-link> 
-        <router-link class="nav-link" to="/signup">Sign up</router-link> 
+        <router-link class="nav-link" to="/history">History</router-link>
         <router-link class="nav-link" to="/login">Log in</router-link> 
+        <router-link class="nav-link" to="/signup">Sign up</router-link> 
+         
     </nav>
     <router-view/>
   </div>
