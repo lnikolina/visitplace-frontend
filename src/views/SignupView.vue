@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     signup() {
-      alert (this.username);
+      alert (this.username + ", you are successfully registered");
     },
   },
 };
