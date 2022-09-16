@@ -16,9 +16,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/BeachView.vue')
   },
   {
-    path: '/fad',
-    name: 'fad',
-    component: () => import(/* webpackChunkName: "about" */ '../views/FaDView.vue')
+    path: '/shops',
+    name: 'shops',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ShopsView.vue')
   },
   {
     path: '/history',
