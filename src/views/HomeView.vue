@@ -2,6 +2,7 @@
   <div class="home">
     
     <h1>Welcome!</h1>
+    <p>These are some places you can visit</p>
 
   </div>
 </template>
