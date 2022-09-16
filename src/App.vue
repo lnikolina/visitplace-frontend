@@ -11,15 +11,30 @@
          
         <div class="container-fluid">
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input v-model="store.searchTerm" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
+
     </nav>
+    {{ store.searchTerm }}
     <router-view/>
   </div>
 
 </template>
+
+
+<script>
+  import store from "@/store"
+  export default {
+    name: 'app',
+    data () {
+      return {
+        store: store,
+      };
+    },
+  };  
+</script>
 
 
 
