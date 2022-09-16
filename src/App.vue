@@ -3,7 +3,7 @@
     <div id="app">
 
       <nav class="nav nav-pills nav-fill"> 
-          <router-link class="nav-link" to="/">Home</router-link> 
+          <router-link class="nav-link" to="/">VisitPoreč</router-link> 
           <router-link class="nav-link" to="/activities">Activities</router-link> 
           <router-link class="nav-link" to="/shops">Shops</router-link> 
           <router-link class="nav-link" to="/history">History</router-link>
@@ -21,22 +21,21 @@
       
       <router-view/>
     </div>
-    
-
   </div>
 </template>
 
 
 <script>
-  import store from "@/store"
-  export default {
-    name: 'app',
+import store from "@/store"
+
+export default {
+  name: 'app',
     data () {
       return {
-        store: store,
+      store: store,
       };
     },
-  };  
+};  
 </script>
 
 
