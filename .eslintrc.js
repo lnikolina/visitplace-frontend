@@ -14,7 +14,8 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/no-unused-components': 'off',
-    'strict':'off'
+    'strict':'off',
+    'vue/multi-word-component-names': 'off', //stackoveflow - multiword-component-names
      
   }
 }
