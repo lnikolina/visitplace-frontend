@@ -6,7 +6,8 @@
       <router-link to="/fad">Food and Drink</router-link> |
       <router-link to="/history">History</router-link> |
       <router-link to="/fad">Food and Drink</router-link> |
-      <router-link to="/signup">Sign up</router-link> 
+      <router-link to="/signup">Sign up</router-link> |
+      <router-link to="/login">Log in</router-link> 
 
 
     
