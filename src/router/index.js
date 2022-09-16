@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Croppa from 'vue-croppa';
+import 'vue-croppa/dist/vue-croppa.css';
 
+Vue.use(Croppa);
 Vue.use(VueRouter)
 
 const routes = [
