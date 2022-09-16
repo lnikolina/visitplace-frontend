@@ -11,9 +11,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/beach',
-    name: 'beach',
-    component: () => import(/* webpackChunkName: "about" */ '../views/BeachView.vue')
+    path: '/activities',
+    name: 'activities',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ActivitiesView.vue')
   },
   {
     path: '/shops',
