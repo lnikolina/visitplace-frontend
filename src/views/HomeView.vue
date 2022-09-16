@@ -6,12 +6,11 @@
 
     <div class="row">
       <div class="col-8">
-        <post-card v-for="card in cards" :key="card" :info="card"/>
+        <post-card v-for="card in filteredCards" :key="card.url" :info="card"/>
       </div>
     </div>
     <div class="col-4">
-      Sidebar
-      {{ store.searchTerm }}
+      
     </div>
   </div>
 </template>
@@ -38,9 +37,23 @@ export default {
       store,
     };
   },
-  components: {
-    PostCard
-  },
+    computed: { //objekt
+      filteredCards() {
+        // logika koja filtrira
+        let termin = this.store.searchTerm;
+        let newCards = [];
+
+        for (let card of this.cards) {
+          if (card.description.indexOf(termin) >= 0) {  // indexof - funkcija koja provjerava da li je string unutar stringa
+             newCards.push(card);
+          }
+        }
+        return newCards;
+      },
+    },
+    components: {
+      PostCard
+    },
 };
 </script>
 

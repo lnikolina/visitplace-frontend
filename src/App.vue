@@ -17,7 +17,7 @@
         </div>
 
     </nav>
-    {{ store.searchTerm }}
+    
     <router-view/>
   </div>
 
