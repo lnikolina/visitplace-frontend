@@ -11,6 +11,7 @@
     </div>
     <div class="col-4">
       Sidebar
+      {{ store.searchTerm }}
     </div>
   </div>
 </template>
@@ -19,22 +20,23 @@
 <script>
 // @ is an alias to /src
 import PostCard from '@/components/PostCard.vue'
+import store from "@/store"
 
 let cards = []
 // ... API  -> sve kartice -> cards
 cards = [
-  "https://picsum.photos/id/1/400/400",
-  "https://picsum.photos/id/2/400/400",
-  "https://picsum.photos/id/3/400/400",
-  "https://picsum.photos/id/4/400/400"
+  {url: 'https://picsum.photos/id/1/400/400', description: 'laptop', time: 'one hour ago...'},
+  {url: 'https://picsum.photos/id/2/400/400', description: 'laptop2', time: 'two hour ago...'},
+  {url: 'https://picsum.photos/id/3/400/400', description: 'laptop3', time: 'tree hour ago...'},
 ];
 
 export default {
   name: 'HomeView',
   data: function () {
     return {
-      cards: cards
-    }
+      cards: cards,
+      store,
+    };
   },
   components: {
     PostCard
