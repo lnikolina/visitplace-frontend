@@ -40,7 +40,9 @@ export default {
   },
   methods: {
     signup() {
-      alert (this.username + ", you are successfully registered");
+      console.log(this.username + ", you are successfully registered");
+      this.$router.replace({ name:'home'})
+      
     },
   },
 };

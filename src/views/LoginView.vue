@@ -34,7 +34,8 @@ export default {
   },
   methods: {
     login(){
-      alert(this.username + ", you are successfully logged in!");
+      console.log(this.username + ", you are successfully logged in!");
+      this.$router.replace({ name:'home'})
     },
   },
 };
