@@ -5,15 +5,15 @@
     <p>These are some places you can visit in Poreč</p>
 
     <div class="row">
-      <post-card v-for="card in cards" :key="card" :info="card"/>
+      <div class="col-8">
+        <post-card v-for="card in cards" :key="card" :info="card"/>
+      </div>
     </div>
     <div class="col-4">
-      <p v-for="card in cards" :key="card">ovo je opis... {{ card }}</p>
-
+      Sidebar
     </div>
   </div>
 </template>
-
 
 
 <script>
@@ -27,7 +27,7 @@ cards = [
   "https://picsum.photos/id/2/400/400",
   "https://picsum.photos/id/3/400/400",
   "https://picsum.photos/id/4/400/400"
-]
+];
 
 export default {
   name: 'HomeView',
