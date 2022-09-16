@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home text-center">
     
     <h1>Welcome!</h1>
     <p>These are some places you can visit in Poreč</p>
@@ -27,7 +27,24 @@ import HelloWorld from '@/components/HelloWorld.vue'
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+   HelloWorld
   }
 }
 </script>
+
+<style scoped lang="scss">
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
