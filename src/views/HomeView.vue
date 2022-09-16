@@ -4,16 +4,12 @@
     <h1>Welcome!</h1>
     <p>These are some places you can visit in Poreč</p>
 
+    <div class="row">
+      <post-card v-for="card in cards" :key="card" :info="card"/>
+    </div>
+    <div class="col-4">
+      <p v-for="card in cards" :key="card">ovo je opis... {{ card }}</p>
 
-    <div class="card text-center">
-      <div class="card-header">
-        VisitPoreč
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Special places for all research lovers</h5>
-        <p class="card-text">Here you will find all available must-see places.</p>
-        
-      </div>   
     </div>
   </div>
 </template>
@@ -22,29 +18,28 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import PostCard from '@/components/PostCard.vue'
+
+let cards = []
+// ... API  -> sve kartice -> cards
+cards = [
+  "https://picsum.photos/id/1/400/400",
+  "https://picsum.photos/id/2/400/400",
+  "https://picsum.photos/id/3/400/400",
+  "https://picsum.photos/id/4/400/400"
+]
 
 export default {
   name: 'HomeView',
+  data: function () {
+    return {
+      cards: cards
+    }
+  },
   components: {
-   HelloWorld
-  }
-}
+    PostCard
+  },
+};
 </script>
 
-<style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+
