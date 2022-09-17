@@ -4,6 +4,7 @@
 
       <nav class="nav nav-pills nav-fill"> 
           <router-link class="nav-link" to="/">VisitPoreč</router-link> 
+          <router-link class="nav-link" to="/postimage">Post</router-link> 
           <router-link class="nav-link" to="/activities">Activities</router-link>  
           <router-link class="nav-link" to="/attractions">Attractions</router-link>
           <router-link class="nav-link" to="/login">Log in</router-link> 
@@ -26,6 +27,7 @@
 
 <script>
 import store from "@/store"
+
 
 export default {
   name: 'app',

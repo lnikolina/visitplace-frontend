@@ -18,7 +18,11 @@ const routes = [
     name: 'activities',
     component: () => import(/* webpackChunkName: "about" */ '../views/ActivitiesView.vue')
   },
-
+  {
+    path: '/postimage',
+    name: 'postimage',
+    component: () => import(/* webpackChunkName: "about" */ '../views/PostImageView.vue')
+  },
   {
     path: '/attractions',
     name: 'attractions',
