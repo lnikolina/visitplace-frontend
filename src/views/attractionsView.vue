@@ -24,7 +24,7 @@ cards = [
   {url: 'https://www.istrapedia.hr/media/uploads/images/Sv_Nikola_15_04_vb.jpg', description: 'Otok Sveti Nikola', adress: 'Otok Sveti Nikola'},
   {url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-dvigrad.jpg', description: 'Dvigrad', adress: '52352, Kanfanar'},
   {url: 'https://whc.unesco.org/uploads/thumbs/site_0809_0003-1200-630-20151104150413.jpg', description: 'Euphrasian Basilica', adress: 'Ul. svetog Eleuterija 22'},
-  {url: 'https://thumbs.dreamstime.com/b/stara-roma%C5%84ska-brama-porec-chorwacja-72399349.jpg', description: 'Stara Romanska brama', adress: 'Poreč'},
+  {url: 'https://thumbs.dreamstime.com/b/stara-roma%C5%84ska-brama-i-euphrasian-bazylika-porec-chorwacja-72411658.jpg', description: 'Stara Romanska brama', adress: 'Poreč'},
   {url: 'https://www.myporec.com/uploads/imgcache/large/articles/_08_porec_aerial_eufrasiana.jpg', description: 'Stari grad Poreč', adress: 'Otokar Kersovani 8'},
   {url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-porec-heritage-museum.jpg', description: 'Zavičajni muzej Poreštine', adress: 'Ul. Decumanus 9, 52440, Poreč'},
   {url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-sveti-lovrec.jpg', description: 'Sveti Lovreč', adress: 'Sveti Lovreč'},
