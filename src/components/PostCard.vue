@@ -11,6 +11,9 @@
             <div class="card-footer text-muted">
                {{info.adress}}
             </div>
+            <div class="card-footer text-muted">
+               {{info.category}}
+            </div>
         </div>
     </div>
 </template>
