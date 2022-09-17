@@ -22,20 +22,12 @@ let cards = []
 // ... API  -> sve kartice -> cards
 cards = [
   {url: 'https://www.istrapedia.hr/media/uploads/images/Sv_Nikola_15_04_vb.jpg', description: 'Otok Sveti Nikola', adress: 'Otok Sveti Nikola'},
-  {url: 'https://www.myporec.com/uploads/imgcache/list/articles/BICIKLIZAM.jpg', description: 'Biciklizam', adress: ''},
   {url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-dvigrad.jpg', description: 'Dvigrad', adress: '52352, Kanfanar'},
-  {url: 'https://www.myporec.com/uploads/imgcache/list/articles/_istradiving_40218-studiosonda.jpg', description: 'Ronjenje u modrom prostranstvu', adress: ''},
-  {url: 'https://www.myporec.com/uploads/imgcache/list/articles/terramagicaadventures_01_1.jpg', description: 'Kajak', adress: ''},
   {url: 'https://whc.unesco.org/uploads/thumbs/site_0809_0003-1200-630-20151104150413.jpg', description: 'Euphrasian Basilica', adress: 'Ul. svetog Eleuterija 22'},
-  {url: 'https://www.myporec.com/uploads/imgcache/list/articles/super_surfer-9.jpg', description: 'SUP', adress: ''},
   {url: 'https://thumbs.dreamstime.com/b/stara-roma%C5%84ska-brama-porec-chorwacja-72399349.jpg', description: 'Stara Romanska brama', adress: 'Poreč'},
-  {url: 'https://www.myporec.com/uploads/imgcache/list/articles/_img_5319.jpg', description: 'Skijanje na vodi', adress: ''},
   {url: 'https://www.myporec.com/uploads/imgcache/large/articles/_08_porec_aerial_eufrasiana.jpg', description: 'Stari grad Poreč', adress: 'Otokar Kersovani 8'},
-  {url: 'https://www.myporec.com/uploads/imgcache/list/articles/JET_SKI.jpg', description: 'Vodeni skuteri', adress: ''},
   {url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-porec-heritage-museum.jpg', description: 'Zavičajni muzej Poreštine', adress: 'Ul. Decumanus 9, 52440, Poreč'},
-  {url: 'https://www.myporec.com/uploads/imgcache/list/articles/1462954542_6777.jpg', description: 'Jedrenje na dasci', adress: ''},
   {url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-sveti-lovrec.jpg', description: 'Sveti Lovreč', adress: 'Sveti Lovreč'},
-  {url: 'https://www.myporec.com/uploads/imgcache/list/articles/41_porec_sport_sailing_01.jpg', description: 'Jedrenje', adress: ''},
   {url: 'https://www.myporec.com/uploads/imgcache/large/articles/1503564849_6289.jpg', description: 'Kuća Dva sveca', adress: 'Ulici sv. Maura'},
   {url: 'https://www.myporec.com/public/uploads/photos/articles/dsc_5937.jpg', description: 'Aquapark Aquacolors', adress: 'MOLINDRIO 18, 52440, Poreč'},
   
