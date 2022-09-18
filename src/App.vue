@@ -41,9 +41,9 @@ firebase.auth().onAuthStateChanged(auth, user => {
       console.log("**** No user");
       store.currentUser = null;  
 
-      if (router.name !== "login") {
+      if (currentRoute.meta.needsUser) { //koja god ruta treba usera vraca me na login
         router.push ({name : "login"})
-      }
+      } 
         
     }
 });
