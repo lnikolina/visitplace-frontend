@@ -25,8 +25,6 @@
 
 
 <script>
-  import { db } from '@/firebase';
-import PostCard from '@/components/PostCard.vue'
 import store from '@/store';
 import router from '@/router';
 import { firebase } from '@/firebase';
@@ -54,35 +52,9 @@ export default {
   data(){
     return{
       store,
-      cards: cards,
-      newImageCategory: '',
-      newImageUrl: '',
-      newImageDescription: '',
-      imageReference: null,
     };
   },
   methods: {
-    getPost(){
-        console.log('firebase dohvat...');
-
-        db.collection('posts')
-          .orderBy('posted_at', 'desc')
-          .limit(10)
-          .get()
-          .then((query) => {
-            this.cards = [];
-            query.forEach((doc) => {
-              const data = doc.data();
-              console.log(data);
-
-              this.card.push({
-                id: doc.id,
-                time: data.posted_at,
-
-              });
-            });
-        });
-      },
     logout(){
       const auth = getAuth().signOut().then(() => {
           this.$router.push({ name: 'login' });

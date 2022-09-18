@@ -71,14 +71,21 @@ export default {
       getPosts() {
         console.log('firebase dohvat')
         db.collection('posts')
+        .orderBy('posted-at','desc')
+        .limit(10)
         .get()
         .then((query) => {
+          this.cards = [];
           query.forEach((doc) => {
-            console.log(doc.id);
-            console.log(doc.data());
+            const data = doc.data();
+            console.log(data);
+
+            this.card.push({
+              id:doc.id,
+              time:data.posted_at
+            });
           });
         });
-        
       },
       postNewImage() {
   
