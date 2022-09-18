@@ -9,10 +9,7 @@
                 <img class="card-img-top" :src="info.url"/>
             </div>
             <div class="card-footer text-muted">
-               {{info.adress}}
-            </div>
-            <div class="card-footer text-muted">
-               {{info.category}}
+               {{info.description}}
             </div>
         </div>
     </div>

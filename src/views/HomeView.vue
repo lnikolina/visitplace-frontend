@@ -16,7 +16,7 @@
               placeholder="Enter the image URL"
               id="imageUrl"
               />
-      </div>
+      </div> 
       
       <div class="form-group">
         <label for="imageDescription">Description</label>
@@ -44,36 +44,49 @@
 // @ is an alias to /src
 import PostCard from '@/components/PostCard.vue'
 import store from '@/store'
-import {db} from '@/firebase';
+import { db } from '@/firebase';
 
-let cards = []
+
 // ... API  -> sve kartice -> cards
-
-cards = [
-  {url: 'https://www.istrapedia.hr/media/uploads/images/Sv_Nikola_15_04_vb.jpg', description: 'Otok Sveti Nikola', adress: 'Otok Sveti Nikola', category:'Attraction'},
-  {url: 'https://www.fitshop.hr/wp-content/uploads/2019/09/Biciklizam-downhill-Fitshop.hr_.jpg', description: 'Biciklizam', adress: '', category:'Activitie'},
-  {url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-dvigrad.jpg', description: 'Dvigrad', adress: '52352, Kanfanar', category:'Attraction'},
-  
-];
+//cards = [
+//  {url: 'https://www.istrapedia.hr/media/uploads/images/Sv_Nikola_15_04_vb.jpg', description: 'Otok Sveti Nikola', adress: 'Otok Sveti Nikola', category:'Attraction'},
+//  {url: 'https://www.fitshop.hr/wp-content/uploads/2019/09/Biciklizam-downhill-Fitshop.hr_.jpg', description: 'Biciklizam', adress: '', category:'Activitie'},
+//  {url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-dvigrad.jpg', description: 'Dvigrad', adress: '52352, Kanfanar', category:'Attraction'},
+//];
 
 export default {
   name: 'HomeView',
   data: function () {
     return { 
-      cards: cards,
+      cards: [],
       store,
       newImageDescription: '',
       newImageUrl:'',
     };
   },
+    mounted() { // kad god se prikaze ova komponenta, dohvatit ce se postovi
+      this.getPosts();
+    },
     methods: {
+      getPosts() {
+        console.log('firebase dohvat')
+        db.collection('posts')
+        .get()
+        .then((query) => {
+          query.forEach((doc) => {
+            console.log(doc.id);
+            console.log(doc.data());
+          });
+        });
+        
+      },
       postNewImage() {
-        console.log('ok');
-
+  
         const imageUrl = this.newImageUrl;
         const imageDescription = this.newImageDescription;
 
-        db.collection("posts").add({
+        db.collection("posts")
+        .add({
           url: imageUrl,
           desc: imageDescription,
           email: store.currentUser,
