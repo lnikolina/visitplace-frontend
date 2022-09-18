@@ -35,6 +35,7 @@
         <post-card v-for="card in filteredCards" :key="card.url" :info="card"/>
       </div>
 
+
     </div>
   </div>
 
@@ -49,9 +50,9 @@ import { db } from '@/firebase';
 
 // ... API  -> sve kartice -> cards
 //cards = [
-//  {url: 'https://www.istrapedia.hr/media/uploads/images/Sv_Nikola_15_04_vb.jpg', description: 'Otok Sveti Nikola'},
-//  {url: 'https://www.fitshop.hr/wp-content/uploads/2019/09/Biciklizam-downhill-Fitshop.hr_.jpg', description: 'Biciklizam', adress: '', category:'Activitie'},
- // {url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-dvigrad.jpg', description: 'Dvigrad', adress: '52352, Kanfanar', category:'Attraction'},
+  //{url: 'https://www.istrapedia.hr/media/uploads/images/Sv_Nikola_15_04_vb.jpg', description: 'Otok Sveti Nikola'},
+  //{url: 'https://www.fitshop.hr/wp-content/uploads/2019/09/Biciklizam-downhill-Fitshop.hr_.jpg', description: 'Biciklizam', adress: '', category:'Activitie'},
+  //{url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-dvigrad.jpg', description: 'Dvigrad', adress: '52352, Kanfanar', category:'Attraction'},
 //];
 
 export default {
