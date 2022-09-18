@@ -1,36 +1,46 @@
 <template>
-    <form action="action_page.php" style=" border:1px solid #ccc">
-        <div class="container">
-            <h1>Sign Up</h1>
-            <p>Please fill in this form to create an account.</p>
-            <hr>
+    <div class="about">
+    <div class="container">
+    <div class="row">
+    <div class="col-sm"></div>
+    <div class="col-sm">
+    <br/>
 
-            <label for="email"><b>Email</b></label>
-            <input type="text" v-model="username" placeholder="Enter Email" name="email" required>
+    <form>
+    <div class="form-group">
+    <p id="admin"><b>Sign-up</b></p>
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" v-model="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+    <p id="mail">We'll never share you e-mail with anyone else.</p>
+    </div>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" v-model="password" placeholder="Enter Password" name="psw" required>
+    <div id="loz" class="form-group">
+    <label for="exampleInputPassword2">Password</label>
+    <br/>
+    <input type="password" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+    </div>
 
-            <label for="psw-repeat"><b>Repeat Password</b></label>
-            <input type="password" v-model="passwordRepeat" placeholder="Repeat Password" name="psw-repeat" required>
-
-            <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-            </label>
-
-            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-            <div class="clearfix">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <button type="button" @click="signup"  class="signupbtn">Sign Up</button>
-            </div>
-        </div>
+    <div id="loz" class="form-group">
+    <label for="exampleInputPassword2">Repeat password</label>
+    <br/>
+    <input type="password" v-model="passwordRepeat" class="form-control" id="exampleInputPassword2" placeholder="Password" /><br/>
+    </div>
+ 
+    <button type="button" @click="signup()" class="btn btn-primary">Submit</button>
+    <br/>
+    
     </form>
-</template>
+    </div>
+    <div class="col-sm"></div>
+    </div>
+    </div>
+    </div>
+    </template>
 
 <script>
     import { firebase } from '@/firebase';
     import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
     export default {
         name: "signup",
         data() {
@@ -45,83 +55,34 @@
         signup(){
             const auth = getAuth();
                 createUserWithEmailAndPassword(auth, this.username, this.password).then(
+
                     function(){
                         console.log('uspješna registracija');
+                        
                     });
+                    this.$router.replace({name: "home"});
                },
             },
         };
+
 </script>
 
 
-
-<style>
-* {box-sizing: border-box}
-
-/* Full-width input fields */
-  input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
+<style lang="scss">
+#admin{
+    font-size:30px;
+    color: grey;
 }
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
+#loz{
+    margin-top:10px;
 }
-
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+#log{
+    font-size:18px;
+    color:rgb(66, 64, 64);
+    margin-left:40%;
 }
-
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-button:hover {
-  opacity:1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add padding to container elements */
-.container {
-  padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-    width: 100%;
-  }
+#pass,#mail{
+    color:rgb(206, 20, 20);
+    margin-bottom:0px;
 }
 </style>

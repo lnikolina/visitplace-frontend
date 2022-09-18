@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Croppa from 'vue-croppa';
 import 'vue-croppa/dist/vue-croppa.css';
+import store from '@/store';
 
 Vue.use(Croppa);
 Vue.use(VueRouter)
@@ -14,19 +15,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/activities',
-    name: 'activities',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ActivitiesView.vue')
-  },
-  {
     path: '/postimage',
     name: 'postimage',
     component: () => import(/* webpackChunkName: "about" */ '../views/PostImageView.vue')
-  },
-  {
-    path: '/attractions',
-    name: 'attractions',
-    component: () => import(/* webpackChunkName: "about" */ '../views/attractionsView.vue')
   },
   {
     path: '/signup',

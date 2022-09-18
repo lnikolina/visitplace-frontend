@@ -5,11 +5,12 @@
       <nav class="nav nav-pills nav-fill"> 
           <router-link class="nav-link" to="/">VisitPoreč</router-link> 
           <router-link class="nav-link" to="/postimage">Post</router-link> 
-          <router-link class="nav-link" to="/activities">Activities</router-link>  
-          <router-link class="nav-link" to="/attractions">Attractions</router-link>
-          <router-link class="nav-link" to="/login">Log in</router-link> 
-          <router-link class="nav-link" to="/signup">Sign up</router-link> 
           
+          <router-link v-if="!store.currentUser" class="nav-link" to="/login">Log in</router-link> 
+          <router-link v-if="!store.currentUser" class="nav-link" to="/signup">Sign up</router-link> 
+          <li class="nav-item">
+            <a v-if="store.currentUser" href="#" @click="logout()" id="link2">Logout</a>
+          </li>
           <div class="container-fluid">
             <form class="d-flex" role="search">
               <input v-model="store.searchTerm" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -26,16 +27,38 @@
 
 
 <script>
-import store from "@/store"
 
-
+import store from '@/store';
+import router from '@/router';
+import { firebase } from '@/firebase';
+import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
+const auth = getAuth();
+onAuthStateChanged(auth, user => {
+  
+  const currentRoute = router.currentRoute;
+  
+  if(user) {
+    store.currentUser = user.email;
+  }
+  else{
+    console.log("**** no user");
+    store.currentUser = null;    
+  }
+});
 export default {
-  name: 'app',
-    data () {
-      return {
-      store: store,
-      };
+  name:'app',
+  data(){
+    return{
+      store,
+    };
+  },
+  methods: {
+    logout(){
+      const auth = getAuth().signOut().then(() => {
+          this.$router.push({ name: 'login' });
+      });
     },
+  },
 };  
 </script>
 
