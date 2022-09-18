@@ -9,9 +9,6 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-    let a = parseInt(req.a)
-    let b = parseInt(req.b)
-    let suma = a + b
 
     console.log(req.query)
 

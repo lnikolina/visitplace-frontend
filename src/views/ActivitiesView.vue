@@ -1,9 +1,8 @@
 <template>
   <div class="home text-center ">
     <p></p>
-    <div class="">
+    <div class="col-8">
         <div class="row">
-        
             <post-card v-for="card in filteredCards" :key="card.url" :info="card"/>
         </div>
     </div>
