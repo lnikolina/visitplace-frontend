@@ -32,6 +32,7 @@ const auth = getAuth();
 const currentRoute = router.currentRoute;
 
 firebase.auth().onAuthStateChanged(auth, user => {
+  const currentRoute = router.currentRoute;
     if(user) {
       console.log('*** User', user.email);
       store.currentUser = user.email;;
