@@ -37,8 +37,8 @@
 
     </div>
   </div>
-</template>
 
+</template>
 
 <script>
 // @ is an alias to /src
@@ -49,9 +49,9 @@ import { db } from '@/firebase';
 
 // ... API  -> sve kartice -> cards
 //cards = [
-//  {url: 'https://www.istrapedia.hr/media/uploads/images/Sv_Nikola_15_04_vb.jpg', description: 'Otok Sveti Nikola', adress: 'Otok Sveti Nikola', category:'Attraction'},
+//  {url: 'https://www.istrapedia.hr/media/uploads/images/Sv_Nikola_15_04_vb.jpg', description: 'Otok Sveti Nikola'},
 //  {url: 'https://www.fitshop.hr/wp-content/uploads/2019/09/Biciklizam-downhill-Fitshop.hr_.jpg', description: 'Biciklizam', adress: '', category:'Activitie'},
-//  {url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-dvigrad.jpg', description: 'Dvigrad', adress: '52352, Kanfanar', category:'Attraction'},
+ // {url: 'https://media.camping-adriatic.com/destinations/recommended/recommended-dvigrad.jpg', description: 'Dvigrad', adress: '52352, Kanfanar', category:'Attraction'},
 //];
 
 export default {
@@ -70,6 +70,7 @@ export default {
     methods: {
       getPosts() {
         console.log('firebase dohvat')
+
         db.collection('posts')
         .orderBy('posted-at','desc')
         .limit(10)
@@ -82,7 +83,9 @@ export default {
 
             this.card.push({
               id:doc.id,
-              time:data.posted_at
+              time:data.posted_at,
+              description:data.desc,
+              url:data.url
             });
           });
         });
