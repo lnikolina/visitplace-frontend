@@ -15,11 +15,6 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/postimage',
-    name: 'postimage',
-    component: () => import(/* webpackChunkName: "about" */ '../views/PostImageView.vue')
-  },
-  {
     path: '/signup',
     name: 'signup',
     component: () => import(/* webpackChunkName: "about" */ '../views/SignupView.vue')

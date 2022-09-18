@@ -2,10 +2,8 @@
   <div>
     <div id="app">
 
-      <nav class="nav nav-pills nav-fill"> 
-          <router-link class="nav-link" to="/">VisitPoreč</router-link> 
-          <router-link class="nav-link" to="/postimage">Post</router-link> 
-          
+      <nav class="nav nav-pills nav-fill text-color:black"> 
+          <router-link class="nav-link" to="/">VisitPlace</router-link> 
           <router-link v-if="!store.currentUser" class="nav-link" to="/login">Log in</router-link> 
           <router-link v-if="!store.currentUser" class="nav-link" to="/signup">Sign up</router-link> 
           <li class="nav-item">
@@ -78,8 +76,11 @@ export default {
   color: #2c3e50;
 }
 
+
+
 nav {
   padding: 30px;
+  color: black;
 
   a {
     font-weight: bold;
