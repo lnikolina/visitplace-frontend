@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-8">
       <form @submit.prevent="postNewImage" class="form-inline mb-5"></form>
-
+      
       <div class="form-group">
         <croppa :width="300" :height="300" placeholder="Upload image..." v-model="imageReference"></croppa>
       </div>
