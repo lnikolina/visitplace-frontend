@@ -29,24 +29,30 @@
 </template>
 
 <script>
-export default {
-  name: "Signup",
-  data () { //funkcija
-    return {
-      username:"",
-      password:"",
-      passwordRepeat: "",
-    };
-  },
-  methods: {
-    signup() {
-      console.log(this.username + ", you are successfully registered");
-      this.$router.replace({ name:'home'})
-      
-    },
-  },
-};
+    import { firebase } from '@/firebase';
+    import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+    export default {
+        name: "signup",
+        data() {
+            return {
+                username:"",
+                password:"",
+                passwordRepeat:"",
+                
+            };
+        },
+    methods:{
+        signup(){
+            const auth = getAuth();
+                createUserWithEmailAndPassword(auth, this.username, this.password).then(
+                    function(){
+                        console.log('uspješna registracija');
+                    });
+               },
+            },
+        };
 </script>
+
 
 
 <style>
