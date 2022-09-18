@@ -64,6 +64,6 @@ export default{
 <style lang="scss">
 #admin{
     font-size:30px;
-    color:rgb(250, 246, 245);
+    color: grey;
 }
 </style>
