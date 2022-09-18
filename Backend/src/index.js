@@ -1,11 +1,26 @@
+//req - u sebi zadrzi dodatne informacije
+//req.query - objekt koji sadrži sve parametre
+//res - ispis u browser ide preko res , .send ispisuje string
+
+
 import express from 'express'
 
 const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-   res.send("Hello world u browser") //ispis u browser ide preko res , .send ispisuje string
-   console.log("Hello world") //ispi u konzolu
+    let a = parseInt(req.a)
+    let b = parseInt(req.b)
+    let suma = a + b
+
+    console.log(req.query)
+
+    res.send('Suma je: ${suma} ') 
+    console.log('Hello world') 
 }) 
 
-app.listen(port, () => console.log ("Slušam na portu ${port}!"))
+app.listen(port, () => console.log('Slušam na portu ${port} ' )) 
+
+
+
+
