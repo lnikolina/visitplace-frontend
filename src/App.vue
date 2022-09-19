@@ -64,7 +64,7 @@ export default {
   methods: {
     logout(){ 
       firebase
-        .auth
+        .auth()
         .signOut()
         .then(() => {
           this.$router.push({ name: 'login' });
@@ -77,6 +77,9 @@ export default {
 
 
 <style lang="scss">
+  .app{
+  text-align: center;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
