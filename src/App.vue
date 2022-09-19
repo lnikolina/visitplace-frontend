@@ -23,30 +23,37 @@
 
 
 <script>
+
 import store from '@/store';
 import router from '@/router';
-import { firebase } from '@/firebase';
+import PostCard  from '@/components/PostCard.vue';
+import { db } from '@/firebase';
+import { firebase, auth } from '@/firebase';
 import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
 
 const auth = getAuth();
 const currentRoute = router.currentRoute;
 
-firebase.auth().onAuthStateChanged(auth, user => {
-  const currentRoute = router.currentRoute;
-    if(user) {
-      console.log('*** User', user.email);
-      store.currentUser = user.email;;
-    }
-    else{
-      console.log("**** No user");
-      store.currentUser = null;  
+firebase.auth().onAuthStateChanged((user)=> {
+    const currentRoute = router.currentRoute;
 
-      if (currentRoute.meta.needsUser) { //koja god ruta treba usera vraca me na login
-        router.push ({name : "login"})
-      } 
-        
-    }
-});
+        if(user) {
+          console.log('*** User', user.email);
+          store.currentUser = user.email;
+
+          if(!currentRoute.meta.needsUser){
+            router.push({ name: 'home' });
+          }
+        }else{
+          console.log("**** No user");
+          store.currentUser = null;  
+
+          if (currentRoute.meta.needsUser) { //koja god ruta treba usera vraca me na login
+            router.push ({name : "login"});
+          }
+        }
+  });
+
 export default {
   name:'app',
   data(){
@@ -55,8 +62,11 @@ export default {
     };
   },
   methods: {
-    logout(){
-      const auth = getAuth().signOut().then(() => {
+    logout(){ 
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
           this.$router.push({ name: 'login' });
       });
     },
