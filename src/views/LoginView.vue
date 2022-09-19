@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-      <div class="mx-auto" style="width: 200px;">    
+  <div class="about text-center">
+      <div class="mx-auto" style="width: 300px;">    
     <div class="align-middle"> <br><br>
 <form>
   <div class="form-group">

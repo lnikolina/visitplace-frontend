@@ -53,6 +53,7 @@
 
 <script>
 import {firebase} from '@/firebase.js'
+
 export default {
   name: "SingnUp",
   data(){
@@ -65,17 +66,19 @@ export default {
   },
   methods: {
     singup(){
-      firebase.auth().createUserWithEmailAndPassword(this.username, this.password).then(
+      firebase.auth().createUserWithEmailAndPassword(this.username, this.password)
+      .then(
         function(){
           console.log('Usiješna registracija');
         }
       )
-      .catch(function(error){
-        console.error('Došlo je do greške', error);
-        alert('Password mora minimalno 6 znakova!!');
-      })
-      console.log('Nastavak');
-          }
+      //.catch(function(error){
+        //console.error('Došlo je do greške', error);
+        //alert('Password mora minimalno 6 znakova!!');
+      //})
+      //console.log('Nastavak');
+    }
+
   }
 }
 </script>

@@ -30,6 +30,7 @@
       </div>
     </div>
   </div>
+  
 
 </template>
 
@@ -37,7 +38,8 @@
 // @ is an alias to /src
 import PostCard from '@/components/PostCard.vue'
 import store from "@/store.js"
-import { db } from '@/firebase.js';
+import { db } from '@/firebase';
+
 
 
 // ... API  -> sve kartice -> cards
@@ -88,7 +90,7 @@ export default {
         this.imageReference.generateBlob(blobData => {
         console.log(blobData);
       });
-      return;
+      
   
         const imageUrl = this.newImageUrl;
         const imageDescription = this.newImageDescription;
