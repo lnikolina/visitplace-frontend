@@ -31,7 +31,7 @@ import { db } from '@/firebase';
 import { firebase, auth } from '@/firebase';
 import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
 
-const auth = getAuth();
+
 const currentRoute = router.currentRoute;
 
 firebase.auth().onAuthStateChanged((user)=> {
@@ -64,7 +64,7 @@ export default {
   methods: {
     logout(){ 
       firebase
-        .auth()
+        .auth
         .signOut()
         .then(() => {
           this.$router.push({ name: 'login' });
