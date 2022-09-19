@@ -1,22 +1,13 @@
 <template>
   <div class="row">
-    <div class="col-8">
+    <div class="offset-md-2 col-7">
+
       <form @submit.prevent="postNewImage" class="form-inline mb-5"></form>
       
       <div class="form-group">
         <croppa :width="300" :height="300" placeholder="Upload image..." v-model="imageReference"></croppa>
       </div>
-
-      <div class="form-group">
-        <label for="imageUrl">Description</label>
-            <input
-              v-model="newImageUrl"
-              type="text"
-              class="form-control ml-2"
-              placeholder="Enter the image URL"
-              id="imageUrl"
-              />
-      </div> 
+    
       
       <div class="form-group">
         <label for="imageDescription">Description</label>
@@ -29,13 +20,14 @@
               />
       </div>
 
-      <button type="button" class="btn btn-primary ml-2">Post image</button>
+      <button type="submit" class="btn btn-primary ml-2">Post image</button>
 
       <div>
         <post-card v-for="card in filteredCards" :key="card.url" :info="card"/>
       </div>
-
-
+      <div class="col-2">
+        Sidebar {{ store.searchTearm }}
+      </div>
     </div>
   </div>
 

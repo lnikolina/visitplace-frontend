@@ -19,9 +19,11 @@
 
 <script>
 import moment from 'moment';
+
 export default {
   props: ["info"],
   name: 'PostCard',
+
   computed: {
     postedFromNow() {
       return moment(this.info.time).fromNow();
