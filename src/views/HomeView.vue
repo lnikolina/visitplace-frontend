@@ -90,6 +90,7 @@ export default {
         this.imageReference.generateBlob(blobData => {
         console.log(blobData);
       });
+return;
       
   
         const imageUrl = this.newImageUrl;
