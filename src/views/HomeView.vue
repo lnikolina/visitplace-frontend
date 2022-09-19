@@ -44,8 +44,8 @@
 <script>
 // @ is an alias to /src
 import PostCard from '@/components/PostCard.vue'
-import store from '@/store'
-import { db } from '@/firebase';
+import store from "@/store.js"
+import { db } from '@/firebase.js';
 
 
 // ... API  -> sve kartice -> cards
@@ -77,8 +77,9 @@ export default {
         .limit(10)
         .get()
         .then((query) => {
-          this.cards = [];
+          
           query.forEach((doc) => {
+
             const data = doc.data();
             console.log(data);
 
@@ -92,6 +93,9 @@ export default {
         });
       },
       postNewImage() {
+        this.imageReference.generateBlob(blobData => {
+        console.log(blobData);
+      });
   
         const imageUrl = this.newImageUrl;
         const imageDescription = this.newImageDescription;
@@ -102,9 +106,14 @@ export default {
           desc: imageDescription,
           email: store.currentUser,
           posted_at: date.now(),
+          
         })
         .then((doc) =>{
+          this.cards = [];
           console.log('Spremljeno', doc);
+          this.newImageUrl = '';
+          this.newImageDescription='';
+          this.getPost();
         })
         .catch((e) => {
           console.error(e);
@@ -114,8 +123,8 @@ export default {
     computed: { //objekt
       filteredCards() { 
         // logika koja filtrira
-        let termin = this.store.searchTerm;
-        let newCards = [];
+        //let termin = this.store.searchTerm;
+        //let newCards = [];
 
         //for (let card of this.cards) {
           //if (card.description.indexOf(termin) >= 0) {  // indexof - funkcija koja provjerava da li je string unutar stringa

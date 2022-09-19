@@ -53,17 +53,21 @@
         },
     methods:{
         signup(){
-            const auth = getAuth();
-                createUserWithEmailAndPassword(auth, this.username, this.password).then(
-
-                    function(){
-                        console.log('uspješna registracija');
-                        
-                    });
-                    this.$router.replace({name: "home"});
-               },
-            },
-        };
+            firebase
+            .auth()
+            .createUserWithEmailAndPassword(auth, this.username, this.password).then(
+                function(){
+                    console.log('uspješna registracija');
+                }
+            )
+            .catch(function(error){
+                console.error('Došlo je do greške', error);
+                alert('Password mora minimalno 6 znakova!!');
+            })
+            console.log('Nastavak');
+            }
+        }
+    }
 
 </script>
 

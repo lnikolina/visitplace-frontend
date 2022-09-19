@@ -5,4 +5,8 @@ const store = reactive({
     currentUser: null,
   })
 
-export default store;
+export default {
+  store:'',
+  searchTerm:'',
+  currentUser:null,
+};

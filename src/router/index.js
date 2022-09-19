@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import Croppa from 'vue-croppa';
-import 'vue-croppa/dist/vue-croppa.css';
-import store from '@/store';
+import Home from '../views/HomeView.vue'
+import store from '@/store.js'
 
-Vue.use(Croppa);
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -36,10 +34,17 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => { //ova ce se ruta pozvati prije promijene svake rute
-  console.log("Stara ruta", from.name, "Nova ruta", to.name, "korisnik", store.currentUser)
+router.beforeEach((to,from,next) => {
+  console.log('Stara ruta', from.name, '-->', to.name, ' korisnik', store.currentUser);
 
-  next();
+  const noUser = store.currentUser === null;
+
+  if(noUser && to.meta.needsUser){
+    next('Login');
+  }else{
+    next();
+  }
 });
 
-export default router
+
+export default router;

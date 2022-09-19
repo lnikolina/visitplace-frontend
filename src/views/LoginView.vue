@@ -45,10 +45,11 @@ export default{
     methods: {
         login(){
             console.log('login...' + this.username);
-            const auth = getAuth();
-                signInWithEmailAndPassword(auth, this.username, this.password)
-                .then((result) => {
-                    console.log('uspjesna prijava', result);
+            firebase
+            .auth()
+            .signInWithEmailAndPassword(auth, this.username, this.password)
+            .then((result) => {
+                console.log('uspjesna prijava', result);
                     this.$router.replace({name: "home"});
                 })
                 .catch(function(e){
