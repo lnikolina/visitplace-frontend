@@ -26,13 +26,8 @@
 
 import store from '@/store';
 import router from '@/router';
-import PostCard  from '@/components/PostCard.vue';
-import { db } from '@/firebase';
 import { firebase } from '@/firebase';
 
-
-
-const currentRoute = router.currentRoute;
 
 firebase.auth().onAuthStateChanged((user)=> {
     const currentRoute = router.currentRoute;
