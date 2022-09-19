@@ -28,8 +28,8 @@ import store from '@/store';
 import router from '@/router';
 import PostCard  from '@/components/PostCard.vue';
 import { db } from '@/firebase';
-import { firebase, auth } from '@/firebase';
-import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
+import { firebase } from '@/firebase';
+
 
 
 const currentRoute = router.currentRoute;

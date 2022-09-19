@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: Home,
     meta: {
       needsUser: true
     }
