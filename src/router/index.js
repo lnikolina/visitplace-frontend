@@ -1,29 +1,47 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/HomeView.vue'
-import store from '@/store.js'
-
+import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home,
-    meta: {
-      needsUser: true
-    }
+    name: 'Home',
+    component: Home
   },
   {
-    path: '/signup',
-    name: 'signup',
-    component: () => import('../views/SignupView.vue')
+    path: '/onama',
+    name: 'Onama',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Onama.vue')
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/LoginView.vue')
+    path: '/registracija',
+    name: 'Registracija',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Registracija.vue')
+  },
+
+  {
+    path: '/korisnik',
+    name: 'Korisnik',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Korisnik.vue')
+  },
+  {
+    path: '/main',
+    name: 'Main',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Main.vue')
   },
 
 ]
@@ -32,19 +50,6 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-});
+})
 
-router.beforeEach((to,from,next) => {
-  console.log('Stara ruta', from.name, '-->', to.name, ' korisnik', store.currentUser);
-
-  const noUser = store.currentUser === null;
-
-  if(noUser && to.meta.needsUser){
-    next('Login');
-  }else{
-    next();
-  }
-});
-
-
-export default router;
+export default router

@@ -1,81 +1,45 @@
 <template>
-  <div>
-    <div id="app">
-
-      <nav class="nav nav-pills nav-fill text-color:black"> 
-          <router-link class="nav-link" to="/">VisitPlace</router-link> 
-          <router-link v-if="!store.currentUser" class="nav-link" to="/login">Log in</router-link> 
-          <router-link v-if="!store.currentUser" class="nav-link" to="/signup">Sign up</router-link> 
-          <li class="nav-item">
-            <a v-if="store.currentUser" href="#" @click="logout()" id="link2">Logout</a>
+  <div id="app">
+       <nav id="nav" class="navbar navbar-expand-lg navbar ">
+       <div class="container-fluid">
+        <a class="navbar-brand" href="#">Visit Porec</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li  v-if="!store.currentUser" class="nav-item">
+            <router-link   to="/" class="nav-link">Home</router-link>
           </li>
-          <div class="container-fluid">
-            <form class="d-flex" role="search">
-              <input v-model="store.searchTerm" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-          <router-view></router-view>
-
-      </nav>
-    </div>
+                    <li  v-if="store.currentUser" class="nav-item">
+            <router-link to="/main" class="nav-link">Home</router-link>
+          </li>
+          <li  v-if="!store.currentUser" class="nav-item">
+            <router-link to="/registracija" class="nav-link">Register</router-link>
+            
+          </li>
+          <li v-if="store.currentUser" class="nav-item">
+              <a href="#" class="nav-link" @click.prevent="logout()">Logout</a>
+            </li>
+        </ul>
+      </div>
+       </div>
+    </nav>
+    <router-view/>
   </div>
 </template>
 
 
-<script>
-
-import store from '@/store';
-import router from '@/router';
-import { firebase } from '@/firebase';
-
-
-firebase.auth().onAuthStateChanged((user)=> {
-    const currentRoute = router.currentRoute;
-
-        if(user) {
-          console.log('*** User', user.email);
-          store.currentUser = user.email;
-
-          if(!currentRoute.meta.needsUser){
-            router.push({ name: 'home' });
-          }
-        }else{
-          console.log("**** No user");
-          store.currentUser = null;  
-
-          if (currentRoute.meta.needsUser) { //koja god ruta treba usera vraca me na login
-            router.push ({name : "login"});
-          }
-        }
-  });
-
-export default {
-  name:'app',
-  data(){
-    return{
-      store,
-    };
-  },
-  methods: {
-    logout(){ 
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.$router.push({ name: 'login' });
-      });
-    },
-  },
-};  
-</script>
-
-
 
 <style lang="scss">
-  .app{
-  text-align: center;
-}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -84,18 +48,58 @@ export default {
   color: #2c3e50;
 }
 
-
-
-nav {
-  padding: 30px;
-  color: black;
+#nav {
+ padding: 10px;
+ background-color: #3d799c;
 
   a {
-    font-weight: bold;
-    color: #2c3e50;
+    color: #fff;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #213850;
     }
   }
+  a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
 }
+</style>
+
+<script>
+import store from "@/store";
+ import  { auth, onAuthStateChanged } from "@/firebase";
+
+ onAuthStateChanged(auth, function (user) {
+  if (user) {
+store.currentUser = user.email;
+
+ }else{
+      store.currentUser = null;
+ }
+ 
+ });
+
+ export default {
+  name: "app",
+  data() {
+    return {
+      store,
+    };
+  },
+  methods: {
+    logout() {
+      auth.signOut().then(() => {
+        this.$router.push({ name: "Home" });
+      });
+    },
+  },
+ };
+
+</script>
