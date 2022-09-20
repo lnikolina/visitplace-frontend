@@ -59,6 +59,7 @@
 <script>
 import { auth, signInWithEmailAndPassword } from "@/firebase";
 
+
 export default {
   name: "Home",
 
