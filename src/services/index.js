@@ -13,4 +13,4 @@ let Posts = {
     }
 }
 
-export { Services }
+export { Service }
