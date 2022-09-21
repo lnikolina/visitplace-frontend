@@ -29,6 +29,10 @@
                               <li  v-if="store.currentUser" class="nav-item">
             <router-link to="/upload" class="nav-link">Upload</router-link>
           </li>
+
+                    <li  v-if="store.currentUser" class="nav-item">
+            <router-link to="/myposts" class="nav-link">My Posts</router-link>
+          </li>
           <li v-if="store.currentUser" class="nav-item ">
               <a href="#" class="nav-link" @click.prevent="logout()">Logout</a>
             </li>
@@ -81,13 +85,21 @@ a:active { text-decoration: none; }
 <script>
 import store from "@/store";
  import  { auth, onAuthStateChanged } from "@/firebase";
+ import router from "@/router";
 
  onAuthStateChanged(auth, function (user) {
   if (user) {
 store.currentUser = user.email;
 
+    if (router.name !== "Main") {
+      router.push({ name: "Main" });
+    }
+
  }else{
       store.currentUser = null;
+          if (router.name !== "Home") {
+      router.push({ name: "Home" });
+    }
  }
  
  });

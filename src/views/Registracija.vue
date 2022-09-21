@@ -6,7 +6,7 @@
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card shadow-2-strong" style="border-radius: 1rem">
             <div class="card-body p-5 text-center">
-              <h3 class="mb-5">Registracija</h3>
+              <h3 class="mb-5">Register</h3>
 
               <div class="form-outline mb-4">
                 <input
@@ -25,7 +25,7 @@
                   id="typePasswordX-1"
                   class="form-control form-control-lg"
                 />
-                <label class="form-label" for="typePasswordX-2">Lozinka</label>
+                <label class="form-label" for="typePasswordX-2">Password</label>
               </div>
 
               <div class="form-outline mb-4">
@@ -36,7 +36,7 @@
                   class="form-control form-control-lg"
                 />
                 <label class="form-label" for="typePasswordX-2"
-                  >Ponovite lozinku</label
+                  >Repeat Password</label
                 >
               </div>
 
@@ -47,11 +47,8 @@
                 type="button"
                 @click="registracija()"
               >
-                Registriraj se
+                Register now
               </button>
-            <div >
-              <p>Don't have an account? <a href="Registracija">Sign Up</a></p>
-            </div>
               <hr class="my-4" />
             </div>
           </div>
@@ -75,15 +72,29 @@ export default {
   },
   methods: {
     registracija() {
-        
+        if(this.password==this.passwordrepeat){
             createUserWithEmailAndPassword(auth, this.email, this.password)
               .then(console.log("Uspješna registracija"))
               .catch(function (error) {
                 alert(error);
               });
         
-   
+   }else{
+     alert("Password not matching");
+   }
     },
   },
 };
 </script>
+
+<style >
+body{
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/visitporec-3d39f.appspot.com/o/bg-imgs%2Fwp1823682-croatia-wallpapers%20(1).jpg?alt=media&token=7889be5b-bcf2-4a3b-9341-4f8fef04c7f6')
+    
+}
+
+.clrk{
+    background-color: rgb(255, 2555, 2555, 0.8) !important;
+}
+
+</style>

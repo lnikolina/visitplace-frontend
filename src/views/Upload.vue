@@ -9,6 +9,7 @@
           <h2 style="color:#fff">VisitPlace</h2>
           <div class="card shadow-2-strong" style="border-radius: 1rem">
             <div class="card-body p-5 text-center">
+              <hr>
               <p class="mb-5 upld">UPLOAD YOUR IMAGE </p>
               <p class="mb-5 opl">and show to the world</p>
 
@@ -23,15 +24,26 @@
         class="uploadButton"
         accept="image/*"
       />
+      <br><br><br>
+        <label class="form-label placeInput1" for="typeEmailX-2">Location</label><br>
+          <input
+        type="Place"
+        id="place"
+        v-model="placeInput"
+        class="placeInput"
+        placeholder="Location of image"
+      />
 <br><br><br>
-
+<hr>
               <button
-                class="btn btn-primary btn-lg btn-block"
+                class="btn btn-primary btn-lg btn-block Disabled"
                 type="button"
+                id="btnnn"
                 @click="uploadnow()"
               >
               UPLOAD
               </button>
+
             </div>
           </div>
         </div>
@@ -82,6 +94,17 @@
   font-size:20px;
   margin-top:-40px;
 }
+
+.placeInput{
+  margin-left: 0%;
+  width: 70%;
+}
+
+.placeInput1{
+  margin-right: 54.2%;
+
+}
+
 </style>
 
 
@@ -95,6 +118,7 @@ export default {
   data() {
     return {
       previewFiles: null,
+      placeInput:"",
     };
   },
 
@@ -109,12 +133,17 @@ export default {
         const docRef = addDoc(collection(db, "data"), {
           imgName: imgeName,
           User: store.currentUser,
+          loc: this.placeInput
         });
-const storageRef = ref(storage, 'imgs/'+imgeName);
 
+
+const storageRef = ref(storage, 'imgs/'+imgeName);
+if(this.placeInput.length!=0){
 uploadBytes(storageRef, this.previewFiles).then((snapshot) => {
-  console.log('Uploaded a blob or file!');
+  console.log('Image is Uploaded');
+  this.$router.go(this.$router.currentRoute)
 });
+    }else{alert("Please insert location")}
      
   },
 }

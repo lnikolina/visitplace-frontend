@@ -1,23 +1,23 @@
 <template>
   <div>
-    <div class="row">
-
-      <div class="cardDiv">
-      <br><br>
+    <div class="row" >
+        <h3 class="main">Main page</h3>
+      <div v-for="imgs in imgdata" v-bind:key="imgs">
+      <br>
         <div
-        class="d-flex justify-content-center py-2" v-for="imgs in imgdata" v-bind:key="imgs">
-
+        class="d-flex justify-content-center py-2" >
           <div class="second ">
-
             <div class="text3"  >
-               <span class="userNames">{{imgs.names}}</span>
+              <img src="~@/assets/user.png" class="imgNme"/> <span class="userNames"> {{imgs.names}}</span>
             </div>
-    
-          <img class="slike" :src="imgs.imges" alt="something" />
-          </div>
 
-        </div>
-        <div></div>
+          <img class="slike" :src="imgs.imges" alt="something" />
+                <div class="thert" v-for="loc in allDataNames" v-bind:key="loc">
+  <span class="loc" v-if="imgs.imgNames === loc.imgName"><img src="~@/assets/world.png" class="imgWorld"/>{{loc.loc}}</span>
+      </div>
+          </div>
+        </div >
+
       </div>
     </div>
   </div>
@@ -26,34 +26,43 @@
 <style>
 
 
-.cardDiv {
-  margin-top: 2.5%;
-  background-color: rgba(111, 102, 102, 0.108);
-  width: 70%;
-  margin-left: 15%;
-  border-radius: 15px;
-  margin-bottom: 2.5%;
-  box-shadow: 2px 2px rgb(0 0 0 / 0.5);
-  border: 1px solid rgb(184, 184, 184);
-  
+body{
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/visitporec-3d39f.appspot.com/o/bg-imgs%2Fwp1823682-croatia-wallpapers%20(1).jpg?alt=media&token=7889be5b-bcf2-4a3b-9341-4f8fef04c7f6')
+    
 }
+
+
+
 
 .slike {
   position: static;
-  padding: 80px;
-  width: 100%;
-  height: 100%;
-  border-radius:80px ;
+  margin-top: 3%;
+  margin-left:  12%;
+  width: 80%;
+  height: 80%;
+  border-radius:15px ;
+   margin-bottom: 5%;
 }
 
 .second {
-  width: 882px;
+  width: 800px;
+  background-color: white;
+ box-shadow: 10px 10px 5px #aaaaaa;
+  border-radius: 15px;
+  margin-bottom: 5%;
+  text-align: left;
+  margin-top: 2%;
+  
+}
+.thert{
+  width: 20%;
   background-color: white;
   box-shadow: 10px 10px 5px #aaaaaa;
   border-radius: 15px;
   margin-bottom: 4%;
-  text-align: left;
-  
+  margin-top: -5%;
+  margin-left: 40%;
+  text-align: center;
 }
 
 .text3{
@@ -61,7 +70,22 @@
   text-align: center;
 }
 .userNames{
-  font-weight: bold;
+  font-size: 18px;
+}
+
+
+.imgNme{
+  margin-top: -0.8%;
+}
+
+.imgWorld{
+  width: 34px;
+  height: 34px;
+}
+
+.loc{
+  margin-top: -0.8%;
+    font-size: 21px;
 }
 
 
@@ -94,10 +118,11 @@ export default {
             this.imgdata.push(
               { imges: "https://firebasestorage.googleapis.com/v0/b/visitporec-3d39f.appspot.com/o/imgs%2F" +itemRef.name +"?alt=media",
                 names:itemRef.name.split("_", 1).join(""),
+                imgNames:itemRef.name,
+
               }
             );
             console.log(this.imgdata);
-
           });
         })
         .catch((error) => {
@@ -111,7 +136,7 @@ export default {
          this.allDataNames.push(doc.data());
         });
       });
-     // console.log(this.allDataNames);
+     console.log(this.allDataNames);
     }
   },
   created: function () {
