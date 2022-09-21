@@ -2,7 +2,7 @@
   <div id="app">
        <nav id="nav" class="navbar navbar-expand-lg navbar ">
        <div class="container-fluid">
-        <a class="navbar-brand" href="#">Visit Porec</a>
+        <a class="navbar-brand" href="#">VisitPlace</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -26,7 +26,10 @@
             <router-link to="/registracija" class="nav-link">Register</router-link>
             
           </li>
-          <li v-if="store.currentUser" class="nav-item">
+                              <li  v-if="store.currentUser" class="nav-item">
+            <router-link to="/upload" class="nav-link">Upload</router-link>
+          </li>
+          <li v-if="store.currentUser" class="nav-item ">
               <a href="#" class="nav-link" @click.prevent="logout()">Logout</a>
             </li>
         </ul>
@@ -69,6 +72,9 @@ a:hover { text-decoration: none; }
 
 
 a:active { text-decoration: none; }
+
+
+
 }
 </style>
 
