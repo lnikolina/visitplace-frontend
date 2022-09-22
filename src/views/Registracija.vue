@@ -89,7 +89,16 @@ export default {
 
 <style >
 body{
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/visitporec-3d39f.appspot.com/o/bg-imgs%2FScreenshot%202022-09-22%20at%2019.00.54.png?alt=media&token=0cbff426-4043-4e67-91a3-76abd1534fac')
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/visitporec-3d39f.appspot.com/o/bg-imgs%2FScreenshot%202022-09-22%20at%2019.00.54.png?alt=media&token=0cbff426-4043-4e67-91a3-76abd1534fac');
+    
+    
+    height: 100%;
+    width: 100%;
+
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
     
 }
 
