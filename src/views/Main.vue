@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row" >
-        <h3 class="main">Main page</h3>
+      
       <div v-for="imgs in imgdata" v-bind:key="imgs">
       <br>
         <div
@@ -27,7 +27,7 @@
 
 
 body{
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/visitporec-3d39f.appspot.com/o/bg-imgs%2Fwp1823682-croatia-wallpapers%20(1).jpg?alt=media&token=7889be5b-bcf2-4a3b-9341-4f8fef04c7f6')
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/visitporec-3d39f.appspot.com/o/bg-imgs%2Ftravel.webp?alt=media&token=e1df7e3d-ea21-4819-9078-ca461e03f4fb')
     
 }
 
@@ -38,16 +38,17 @@ body{
   position: static;
   margin-top: 3%;
   margin-left:  12%;
+  
   width: 80%;
   height: 80%;
   border-radius:15px ;
-   margin-bottom: 5%;
+  margin-bottom: 5%;
 }
 
 .second {
   width: 800px;
-  background-color: white;
- box-shadow: 10px 10px 5px #aaaaaa;
+  background-color: #3d799c;
+  box-shadow: 5px 5px 5px #aaaaaa;
   border-radius: 15px;
   margin-bottom: 5%;
   text-align: left;
@@ -55,12 +56,11 @@ body{
   
 }
 .thert{
-  width: 20%;
+  width: 50%;
   background-color: white;
-  box-shadow: 10px 10px 5px #aaaaaa;
-  border-radius: 15px;
+  
   margin-bottom: 4%;
-  margin-top: -5%;
+  margin-top: -4%;
   margin-left: 40%;
   text-align: center;
 }
@@ -68,24 +68,31 @@ body{
 .text3{
   top: 550px;
   text-align: center;
+  border: solid white 2px;
+  
+  background: white;
 }
 .userNames{
   font-size: 18px;
+  
 }
 
 
 .imgNme{
   margin-top: -0.8%;
+  
 }
 
 .imgWorld{
   width: 34px;
   height: 34px;
+  
 }
 
 .loc{
   margin-top: -0.8%;
     font-size: 21px;
+    
 }
 
 

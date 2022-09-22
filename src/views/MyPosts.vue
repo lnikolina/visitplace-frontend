@@ -105,7 +105,7 @@ deleteObject(desertRef).then(() => {
 .boredri{   
   width: 35%;
   height: 45% ;
-  background-color: white;
+  background-color: grey;
  box-shadow: 10px 10px 5px #aaaaaa;
   border-radius: 15px;
   margin-bottom: 5%;
