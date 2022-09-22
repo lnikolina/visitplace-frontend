@@ -11,7 +11,7 @@
             <div class="card-body p-5 text-center">
               <hr>
               <p class="mb-5 upld">UPLOAD YOUR IMAGE </p>
-              <p class="mb-5 opl">and show to the world</p>
+              <p class="mb-5 opl">and show it to the world</p>
 
 
               <div class="form-outline mb-4">
@@ -80,8 +80,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-      filter: blur(1.5px);
-  -webkit-filter: blur(1.5px);
+      
 }
 
 
