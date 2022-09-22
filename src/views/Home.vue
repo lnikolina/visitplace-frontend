@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="image">
-          <div class="image__bg" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/visitporec-3d39f.appspot.com/o/bg-imgs%2Ftravel.webp?alt=media&token=e1df7e3d-ea21-4819-9078-ca461e03f4fb');"></div>
+          <div class="image__bg" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/visitporec-3d39f.appspot.com/o/bg-imgs%2FScreenshot%202022-09-22%20at%2019.00.54.png?alt=media&token=0cbff426-4043-4e67-91a3-76abd1534fac');"></div>
            <section class="vh-100">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
