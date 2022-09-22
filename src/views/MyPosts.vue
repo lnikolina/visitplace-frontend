@@ -76,7 +76,6 @@ deleteObject(desertRef).then(() => {
     },
      created: function () {
     this.loaddata();
-    this.loadNames();
   },
        
 }
