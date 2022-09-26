@@ -104,9 +104,9 @@
 </style>
 
 <script>
-import { storage, ref, uploadBytes } from "@/firebase";
-import { db, addDoc, collection } from "@/firebase";
-import store from "@/store";
+import { storage, ref, uploadBytes, getDownloadURL } from "@/firebase";
+import axios from "axios";
+import { mapGetters } from "vuex";
 
 export default {
 	name: "Home",
@@ -116,26 +116,29 @@ export default {
 			placeInput: "",
 		};
 	},
-
+	computed: {
+		...mapGetters({ currentUser: "currentUser" }),
+	},
 	methods: {
 		uploadFile(event) {
 			console.log(event);
 			this.previewFiles = event.target.files[0];
 		},
 		uploadnow() {
-			const splitUsr = store.currentUser.toUpperCase().split("@", 1).join("");
+			const splitUsr =
+				this.currentUser.firstName + " " + this.currentUser.lastName;
 			const imgeName = splitUsr + "_" + this.previewFiles.name;
-			const docRef = addDoc(collection(db, "data"), {
-				imgName: imgeName,
-				User: store.currentUser,
-				loc: this.placeInput,
-			});
 
 			const storageRef = ref(storage, "imgs/" + imgeName);
 			if (this.placeInput.length != 0) {
 				uploadBytes(storageRef, this.previewFiles).then((snapshot) => {
-					console.log("Image is Uploaded");
-					this.$router.go(this.$router.currentRoute);
+					getDownloadURL(snapshot.ref).then(async (url) => {
+						await axios.post("/posts", {
+							location: this.placeInput,
+							photoURL: url,
+						});
+						this.$router.go(this.$router.currentRoute);
+					});
 				});
 			} else {
 				alert("Please insert location");

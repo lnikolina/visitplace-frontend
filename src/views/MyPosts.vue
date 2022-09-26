@@ -32,17 +32,9 @@ export default {
 				console.log(error);
 			}
 		},
-		deleteimg(trn) {
-			const imgRef = ref(storage, "imgs/" + trn);
-
-			// Delete the file
-			deleteObject(imgRef)
-				.then(() => {
-					this.$router.go(this.$router.currentRoute);
-				})
-				.catch((error) => {
-					alert("Opss somthing went wrong..");
-				});
+		async deleteimg(trn) {
+			try {
+			} catch (error) {}
 		},
 	},
 	created: function () {
