@@ -4,7 +4,7 @@ import router from "./router";
 import store from "./store";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = " https://visitplace.herokuapp.com";
 
 Vue.config.productionTip = false;
 
@@ -13,3 +13,4 @@ new Vue({
 	store,
 	render: (h) => h(App),
 }).$mount("#app");
+
