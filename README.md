@@ -1,26 +1,6 @@
 Made for program engineering course.
 
-# visitplace
+# visitplace frontend application
 
-## Project setup
-```
-npm install
-```
+Backend: https://github.com/lnikolina/visitplace-backend.git
 
-### Compiles and hot-reloads for development
-```
-npm serve
-```
-
-### Compiles and minifies for production
-```
-npm build
-```
-
-### Lints and fixes files
-```
-npm lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
