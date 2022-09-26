@@ -5,6 +5,8 @@ import axios from "axios";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+
+// Core Concepts (state, getters, mutations, actions)	
 	state: {
 		bearerToken: localStorage.getItem("token"),
 		currentUser: null,
@@ -15,7 +17,7 @@ export default new Vuex.Store({
 			return state.currentUser;
 		},
 	},
-	mutations: {
+	mutations: {  // jedini nacin za stvarno izmijenim stanje u vuex-u
 		setCurrentUser(state, payload) {
 			state.currentUser = payload;
 		},
@@ -37,7 +39,7 @@ export default new Vuex.Store({
 			state.bearerToken = payload;
 		},
 	},
-	actions: {
+	actions: { // umjesto mutacije stanja, akcije izvrsavaju mutaciju
 		async fetchCurrentUser({ commit }) {
 			console.log(localStorage.token);
 			if (localStorage.token) {
