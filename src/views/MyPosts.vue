@@ -1,13 +1,13 @@
 <template>
 	<div>
 		<h3>My Posts</h3>
-		<div v-for="imgs in imgdata" v-bind:key="imgs">
+		<div v-for="img in imgdata" v-bind:key="img._id">
 			<div class="boredri">
 				<p></p>
 				<button
 					class="btn deletebtn"
 					type="button"
-					@click="deleteimg(imgs.imgNames)"
+					@click="deleteimg(img.imgNames)"
 				>
 					Delete
 				</button>
@@ -18,41 +18,21 @@
 </template>
 
 <script>
-import { storage, ref, listAll, deleteObject } from "@/firebase";
-import store from "@/store";
-
 export default {
 	name: "myuploads",
 	data() {
 		return {
 			imgdata: [],
-			splitUsr: "",
 		};
 	},
 	methods: {
-		loaddata() {
-			this.splitUsr = store.currentUser.toUpperCase().split("@", 1).join("");
-			const listRef = ref(storage, "gs://visitporec-3d39f.appspot.com/imgs");
-			listAll(listRef)
-				.then((res) => {
-					res.prefixes.forEach((folderRef) => {});
-					res.items.forEach((itemRef) => {
-						if (itemRef.name.includes(this.splitUsr)) {
-							this.imgdata.push({
-								imges:
-									"https://firebasestorage.googleapis.com/v0/b/visitporec-3d39f.appspot.com/o/imgs%2F" +
-									itemRef.name +
-									"?alt=media",
-								imgNames: itemRef.name,
-							});
-						}
-					});
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-
-			console.log("");
+		async loaddata() {
+			try {
+				const results = await axios.get("/posts");
+				this.imgdata = results.data;
+			} catch (error) {
+				console.log(error);
+			}
 		},
 		deleteimg(trn) {
 			const desertRef = ref(storage, "imgs/" + trn);

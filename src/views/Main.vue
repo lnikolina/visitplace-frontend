@@ -1,20 +1,22 @@
 <template>
 	<div>
 		<div class="row">
-			<div v-for="imgs in imgdata" v-bind:key="imgs">
+			<div v-for="img in imgdata" v-bind:key="img._id">
 				<br />
 				<div class="d-flex justify-content-center py-2">
 					<div class="second">
 						<div class="text3">
 							<img src="~@/assets/user.png" class="imgNme" />
-							<span class="userNames"> {{ imgs.names }} </span>
+							<span class="userNames">
+								{{ img.user.firstName + " " + img.user.lastName }}
+							</span>
 						</div>
 
-						<img class="slike" :src="imgs.imges" alt="something" />
-						<div class="thert" v-for="loc in allDataNames" v-bind:key="loc">
-							<span class="loc" v-if="imgs.imgNames === loc.imgName"
+						<img class="slike" :src="img.photoURL" alt="something" />
+						<div class="thert">
+							<span class="loc"
 								><img src="~@/assets/world.png" class="imgWorld" />{{
-									loc.loc
+									img.location
 								}}</span
 							>
 						</div>
@@ -88,37 +90,24 @@ body {
 
 <script>
 import { storage, ref, listAll, db, collection, getDocs } from "@/firebase";
+import axios from "axios";
 
 export default {
 	name: "Home",
 	data() {
 		return {
 			imgdata: [],
-			allDataNames: [],
-			namesOfus: [],
 		};
 	},
 	methods: {
-		loaddata() {
-			const listRef = ref(storage, "gs://visitporec-3d39f.appspot.com/imgs");
-			listAll(listRef)
-				.then((res) => {
-					res.prefixes.forEach((folderRef) => {});
-					res.items.forEach((itemRef) => {
-						this.imgdata.push({
-							imges:
-								"https://firebasestorage.googleapis.com/v0/b/visitporec-3d39f.appspot.com/o/imgs%2F" +
-								itemRef.name +
-								"?alt=media",
-							names: itemRef.name.split("_", 1).join(""),
-							imgNames: itemRef.name,
-						});
-						console.log(this.imgdata);
-					});
-				})
-				.catch((error) => {
-					console.log(error);
-				});
+		async loaddata() {
+			try {
+				const rezultati = await axios.get("/posts");
+				console.log(rezultati.data);
+				this.imgdata = rezultati.data;
+			} catch (error) {
+				console.log(error);
+			}
 		},
 
 		loadNames() {
@@ -132,7 +121,6 @@ export default {
 	},
 	created: function () {
 		this.loaddata();
-		this.loadNames();
 	},
 };
 </script>
