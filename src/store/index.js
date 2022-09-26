@@ -8,12 +8,27 @@ export default new Vuex.Store({
 	state: {
 		bearerToken: localStorage.getItem("token"),
 		currentUser: null,
+		userLoading: true,
+	},
+	getters: {
+		currentUser(state) {
+			return state.currentUser;
+		},
 	},
 	mutations: {
 		setCurrentUser(state, payload) {
 			state.currentUser = payload;
 		},
+		setUserLoading(state, payload) {
+			state.userLoading = payload;
+		},
+		logout(state) {
+			state.currentUser = null;
+			state.bearerToken = null;
+			localStorage.removeItem("token");
+		},
 		setBearerToken(state, payload) {
+			console.log("PAYLOAD", payload);
 			if (payload) {
 				axios.defaults.headers["Authorization"] = `Bearer ${payload}`;
 			} else {
@@ -24,12 +39,14 @@ export default new Vuex.Store({
 	},
 	actions: {
 		async fetchCurrentUser({ commit }) {
+			console.log(localStorage.token);
 			if (localStorage.token) {
 				commit("setBearerToken", localStorage.token);
 			}
 			try {
 				const res = await axios.get("/user");
 				commit("setCurrentUser", res.data);
+				commit("setUserLoading", false);
 			} catch (error) {
 				console.log(error);
 				localStorage.removeItem("token");

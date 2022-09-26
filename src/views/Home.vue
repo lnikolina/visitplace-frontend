@@ -66,7 +66,7 @@
 <script>
 import { auth, signInWithEmailAndPassword } from "@/firebase";
 import axios from "axios";
-import { mapMutations } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 export default {
 	name: "Home",
 
@@ -76,7 +76,16 @@ export default {
 			password: "",
 		};
 	},
+	beforeUpdate() {
+		if (this.currentUser) {
+			this.$router.replace({ name: "Main" });
+		}
+	},
+	computed: {
+		...mapGetters({ currentUser: "currentUser" }),
+	},
 	methods: {
+		...mapActions({ fetchCurrentUser: "fetchCurrentUser" }),
 		...mapMutations({ setBearerToken: "setBearerToken" }),
 		async login() {
 			try {
@@ -84,7 +93,10 @@ export default {
 					email: this.email,
 					password: this.password,
 				});
+				localStorage.setItem("token", result.data.token);
 				this.setBearerToken(result.data.token);
+				this.fetchCurrentUser();
+				this.$router.replace({ name: "Main" });
 			} catch (error) {
 				console.log(error);
 			}
@@ -113,6 +125,6 @@ export default {
 	background-position: 50%;
 	background-repeat: no-repeat;
 	background-size: cover;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 </style>
