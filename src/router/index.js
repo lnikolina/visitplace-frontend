@@ -72,11 +72,15 @@ router.beforeEach((to, from, next) => {
 	const loading = store.getters.userLoading;
 	if (to.meta.needsAuth && !user && !loading) {
 		console.log("user", user);
-		next("/");
+		next({ name: "Home" });
+		return;
 	} else if (!to.meta.needsAuth && user && !loading) {
-		console.log("user", user);
 		next("/main");
-	} else next();
+		return;
+	} else {
+		next();
+		return;
+	}
 });
 
 export default router;

@@ -50,7 +50,10 @@
 									</button>
 									<div class="form-footer">
 										<p>
-											Don't have an account? <a href="Registracija">Sign Up</a>
+											Don't have an account?
+											<router-link :to="{ name: 'Registracija' }"
+												>Sign Up</router-link
+											>
 										</p>
 									</div>
 								</div>
@@ -76,6 +79,7 @@ export default {
 			password: "",
 		};
 	},
+
 	beforeUpdate() {
 		if (this.currentUser) {
 			this.$router.replace({ name: "Main" });
@@ -94,8 +98,7 @@ export default {
 					password: this.password,
 				});
 				localStorage.setItem("token", result.data.token);
-				this.setBearerToken(result.data.token);
-				this.fetchCurrentUser();
+				await this.fetchCurrentUser();
 				this.$router.replace({ name: "Main" });
 			} catch (error) {
 				console.log(error);
