@@ -65,7 +65,8 @@
 
 <script>
 import { auth, signInWithEmailAndPassword } from "@/firebase";
-
+import axios from "axios";
+import { mapMutations } from "vuex";
 export default {
 	name: "Home",
 
@@ -76,14 +77,17 @@ export default {
 		};
 	},
 	methods: {
-		login() {
-			signInWithEmailAndPassword(auth, this.email, this.password)
-				.then((result) => {
-					this.$router.push({ name: "Main" });
-				})
-				.catch((error) => {
-					alert(error);
+		...mapMutations({ setBearerToken: "setBearerToken" }),
+		async login() {
+			try {
+				const result = await axios.post("/auth", {
+					email: this.email,
+					password: this.password,
 				});
+				this.setBearerToken(result.data.token);
+			} catch (error) {
+				console.log(error);
+			}
 		},
 	},
 };
