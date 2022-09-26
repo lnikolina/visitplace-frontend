@@ -1,4 +1,4 @@
-Made for program engineering course.
+Made for Program Engineering course.
 
 # VisitPlace frontend application
 
