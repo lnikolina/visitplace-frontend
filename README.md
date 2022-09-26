@@ -1,6 +1,6 @@
 Made for program engineering course.
 
-# visitplace frontend application
+# VisitPlace frontend application
 
 Project documentation: [VisitPlace_projektnaDokumentacija.pdf](https://github.com/lnikolina/visitplace-frontend/files/9646369/VisitPlace_projektnaDokumentacija.pdf)
 
