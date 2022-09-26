@@ -70,6 +70,7 @@
 import { auth, signInWithEmailAndPassword } from "@/firebase";
 import axios from "axios";
 import { mapActions, mapGetters, mapMutations } from "vuex";
+
 export default {
 	name: "Home",
 
@@ -79,7 +80,6 @@ export default {
 			password: "",
 		};
 	},
-
 	beforeUpdate() {
 		if (this.currentUser) {
 			this.$router.replace({ name: "Main" });

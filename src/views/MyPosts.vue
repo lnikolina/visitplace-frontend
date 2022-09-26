@@ -4,20 +4,18 @@
 		<div v-for="img in imgdata" v-bind:key="img._id">
 			<div class="boredri">
 				<p></p>
-				<button
-					class="btn deletebtn"
-					type="button"
-					@click="deleteimg(img.imgNames)"
-				>
+				<button class="btn deletebtn" type="button" @click="deleteimg(img)">
 					Delete
 				</button>
-				<img class="imgaesfor" :src="imgs.imges" alt="something" />
+				<img class="imgaesfor" :src="img.photoURL" alt="something" />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
 	name: "myuploads",
 	data() {
@@ -28,17 +26,17 @@ export default {
 	methods: {
 		async loaddata() {
 			try {
-				const results = await axios.get("/posts");
+				const results = await axios.get("/posts/me");
 				this.imgdata = results.data;
 			} catch (error) {
 				console.log(error);
 			}
 		},
 		deleteimg(trn) {
-			const desertRef = ref(storage, "imgs/" + trn);
+			const imgRef = ref(storage, "imgs/" + trn);
 
 			// Delete the file
-			deleteObject(desertRef)
+			deleteObject(imgRef)
 				.then(() => {
 					this.$router.go(this.$router.currentRoute);
 				})

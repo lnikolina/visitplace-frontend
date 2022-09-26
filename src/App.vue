@@ -99,8 +99,13 @@ export default {
 			store,
 		};
 	},
-	mounted() {
-		this.fetchCurrentUser();
+	async mounted() {
+		await this.fetchCurrentUser();
+		if (this.currentUser) {
+			this.$router.replace({ name: "Main" });
+		} else {
+			this.$router.replace({ name: "Home" });
+		}
 	},
 	computed: {
 		...mapGetters({ currentUser: "currentUser" }),

@@ -109,15 +109,6 @@ export default {
 				console.log(error);
 			}
 		},
-
-		loadNames() {
-			getDocs(collection(db, "data")).then((querySnapshot) => {
-				querySnapshot.forEach((doc) => {
-					this.allDataNames.push(doc.data());
-				});
-			});
-			console.log(this.allDataNames);
-		},
 	},
 	created: function () {
 		this.loaddata();

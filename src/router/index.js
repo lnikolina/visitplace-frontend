@@ -64,7 +64,7 @@ const router = new VueRouter({
 	routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeResolve((to, from, next) => {
 	const user = store.getters.currentUser;
 	const loading = store.getters.userLoading;
 	if (to.meta.needsAuth && !user && !loading) {
