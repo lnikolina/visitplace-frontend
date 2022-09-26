@@ -4,7 +4,7 @@
 		<div v-for="img in imgdata" v-bind:key="img._id">
 			<div class="boredri">
 				<p></p>
-				<button class="btn deletebtn" type="button" @click="deleteimg(img)">
+				<button class="btn deletebtn" type="button" @click="deleteimg(img._id)">
 					Delete
 				</button>
 				<img class="imgaesfor" :src="img.photoURL" alt="something" />
@@ -32,9 +32,13 @@ export default {
 				console.log(error);
 			}
 		},
-		async deleteimg(trn) {
+		async deleteimg(id) {
 			try {
-			} catch (error) {}
+				await axios.delete(`/posts/${id}`);
+				this.imgdata = this.imgdata.filter((elem) => elem._id !== id);
+			} catch (error) {
+				console.log(error);
+			}
 		},
 	},
 	created: function () {
